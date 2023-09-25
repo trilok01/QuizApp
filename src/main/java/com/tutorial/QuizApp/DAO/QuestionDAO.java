@@ -1,15 +1,13 @@
 package com.tutorial.QuizApp.DAO;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.tutorial.QuizApp.Model.Question;
 
 @Repository
-public class QuestionDAO {
-	public List<Question> getAllQuestions() {
-		return null;
-	}
+public interface QuestionDAO extends JpaRepository<Question, Integer>{
+	List<Question> findAllByCategory(String category);
 }
