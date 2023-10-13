@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -60,5 +61,11 @@ public class QuestionController {
 	public ResponseEntity<String> deleteQuestion(@PathVariable Integer questionId) {
 		ResponseDTO responseDTO = questionService.deleteQuestion(questionId);
 		return new ResponseEntity<>(responseDTO.getMessage(), responseDTO.getHttpStatusCode());
+	}
+	
+	@PutMapping("updateQuestion")
+	public ResponseEntity<String> updateQuestion(@RequestBody Question question) {
+		questionService.updateQuestion(question);
+		return new ResponseEntity<>("Updated Successfully", HttpStatus.OK);
 	}
 }

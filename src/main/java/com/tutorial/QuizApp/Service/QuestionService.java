@@ -42,4 +42,8 @@ public class QuestionService {
 		
 		return responseDTO;
 	}
+
+	public void updateQuestion(Question question) {
+		questionDAO.save(question);
+	}
 }
